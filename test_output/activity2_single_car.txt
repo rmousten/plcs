@@ -1,0 +1,34 @@
+[   405 ms] Car 1 arrives at the entry gate
+[   405 ms] Car 1 requests ENTRY gate
+[   405 ms] ENTRY gate OPENS for Car 1
+[   405 ms] Car 1 drives through ENTRY gate
+[   405 ms] Car 1 is parked for 900 ms
+[   405 ms] ENTRY gate CLOSES
+[  1305 ms] Car 1 wants to leave
+[  1305 ms] Car 1 requests EXIT gate
+[  1306 ms] EXIT gate OPENS for Car 1
+[  1306 ms] Car 1 drives through EXIT gate
+[  1306 ms] Car 1 has left the parking lot
+[  1306 ms] EXIT gate CLOSES
+[  1748 ms] Car 1 arrives at the entry gate
+[  1748 ms] Car 1 requests ENTRY gate
+[  1748 ms] ENTRY gate OPENS for Car 1
+[  1748 ms] Car 1 drives through ENTRY gate
+[  1748 ms] Car 1 is parked for 900 ms
+[  1748 ms] ENTRY gate CLOSES
+[  2648 ms] Car 1 wants to leave
+[  2648 ms] Car 1 requests EXIT gate
+[  2648 ms] EXIT gate OPENS for Car 1
+[  2648 ms] Car 1 drives through EXIT gate
+[  2648 ms] Car 1 has left the parking lot
+[  2648 ms] EXIT gate CLOSES
+[  3346 ms] Car 1 arrives at the entry gate
+[  3346 ms] Car 1 requests ENTRY gate
+[  3346 ms] ENTRY gate OPENS for Car 1
+[  3347 ms] Car 1 drives through ENTRY gate
+[  3347 ms] Car 1 is parked for 900 ms
+[  3347 ms] ENTRY gate CLOSES
+[  4000 ms] --- shutting down ---
+[  4000 ms] ENTRY gate thread stopped
+[  4000 ms] EXIT gate thread stopped
+[  4247 ms] Car 1 wants to leave

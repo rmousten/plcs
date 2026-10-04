@@ -1,0 +1,61 @@
+@startuml
+title PLCS - one car, entry gate and exit gate (Activity 1)
+
+|Car|
+start
+repeat
+  :Drive around;
+  :lock(entry.m);
+  :wait(carCv) until entry not claimed;
+  :claimed = true;
+  :requested = true;
+  :notify_one(gateCv);
+  :wait(carCv) until open;
+  :Drive through entry;
+  :passed = true;
+  :notify_one(gateCv);
+  :unlock(entry.m);
+  :Park for a while;
+  :lock(exit.m);
+  :wait(carCv) until exit not claimed;
+  :claimed = true;
+  :requested = true;
+  :notify_one(gateCv);
+  :wait(carCv) until open;
+  :Drive through exit;
+  :passed = true;
+  :notify_one(gateCv);
+  :unlock(exit.m);
+repeat while (program running?) is (yes)
+stop
+
+|Entry gate|
+start
+repeat
+  :lock(m);
+  :wait(gateCv) until requested;
+  :Open bar (open = true);
+  :notify_all(carCv);
+  :wait(gateCv) until passed;
+  :Close bar, reset flags,
+   claimed = false;
+  :notify_all(carCv);
+  :unlock(m);
+repeat while (program running?) is (yes)
+stop
+
+|Exit gate|
+start
+repeat
+  :lock(m);
+  :wait(gateCv) until requested;
+  :Open bar (open = true);
+  :notify_all(carCv);
+  :wait(gateCv) until passed;
+  :Close bar, reset flags,
+   claimed = false;
+  :notify_all(carCv);
+  :unlock(m);
+repeat while (program running?) is (yes)
+stop
+@enduml

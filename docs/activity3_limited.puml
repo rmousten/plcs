@@ -1,0 +1,34 @@
+@startuml
+title PLCS with limited capacity - car thread (Activity 3)
+
+|Car|
+start
+repeat
+  :Drive around;
+  :Claim entry gate;
+  note right: lock order 1: entry gate
+  |ParkingLot monitor|
+  :lock(capacity.m);
+  note right: lock order 2: capacity mutex
+  while (free == 0?) is (yes)
+    :wait(notFull)\n(releases capacity.m);
+  endwhile (no)
+  :free--;
+  :unlock(capacity.m);
+  |Car|
+  :Request entry gate,\nwait for open, drive in;
+  :Park for a while;
+  |ParkingLot monitor|
+  :lock(capacity.m);
+  note right: lock order 1: capacity mutex
+  :free++;
+  |Car|
+  :Claim exit gate, request,\nwait for open, drive out;
+  note right: lock order 2: exit gate
+  |ParkingLot monitor|
+  :unlock(capacity.m);
+  :notify_one(notFull);
+  |Car|
+repeat while (program running?) is (yes)
+stop
+@enduml
